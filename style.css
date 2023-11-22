@@ -1,8 +1,15 @@
 @import url("https://fonts.googleapis.com/css2?family=Cabin:wght@400;500;600;700&display=swap");
 
+:root {
+  --gray: #758190;
+  --light-blue: lightblue;
+}
+
 body {
   font-family: "Cabin";
   background-color: #758190;
+  padding: 1rem;
+  position: relative;
 }
 
 #tentacles {
@@ -11,12 +18,53 @@ body {
 
 .header {
   display: flex;
+  justify-content: space-between;
   background-color: lightblue;
   padding: 1%;
   align-items: center;
   margin-left: -10px;
   margin-right: -10px;
   margin-top: -10px;
+  border-radius: 4px;
+}
+
+.header > div {
+  display: flex;
+  gap: 1rem;
+}
+
+form {
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+#search-bar {
+  height: 2rem;
+  width: 12rem;
+}
+
+#search-button {
+  position: absolute;
+  right: 0;
+  width: 2rem;
+  height: 2rem;
+  background-image: url("./assets/search-icon.png");
+  background-size: contain;
+}
+
+#our-games-btn {
+  background-color: var(--gray);
+  color: black;
+  width: fit-content;
+  height: auto;
+  padding: 1rem;
+  border-radius: 7px;
+  text-decoration: none;
+}
+
+#description-container > p {
+  font-size: 1.25rem;
 }
 
 .stats-container {
@@ -45,9 +93,9 @@ body {
 }
 
 #games-container {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 1rem;
 }
 
 .game-img {
@@ -58,11 +106,20 @@ body {
 
 .game-card {
   background-color: #ffffff;
-  padding: 1%;
+  padding: 4%;
   margin: 1%;
   width: 300px;
+  height: 400px;
   text-align: center;
   border-radius: 7px;
+  box-shadow: 1px 1px 4px 4px rgb(96, 96, 96);
+}
+
+.game-card > div {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  height: 100%;
 }
 
 .game-card:hover {
@@ -70,8 +127,30 @@ body {
   box-shadow: 0 0 30px lightblue;
 }
 
+.game-name {
+  font-size: 1.25rem;
+  font-weight: bold;
+}
+
 #button-container {
   text-align: center;
+}
+
+#button-container > button,
+#our-games-btn {
+  transition: ease-in-out transform 0.2s;
+}
+
+#button-container > button:hover,
+#our-games-btn:hover {
+  cursor: pointer;
+  background-color: #a8b0bc;
+  transform: scale(1.05, 1.05);
+}
+
+#button-container > button:active,
+#our-games-btn:active {
+  transform: scale(0.9, 0.9);
 }
 
 button {
@@ -80,4 +159,46 @@ button {
   padding: 1%;
   margin: 1%;
   border-radius: 7px;
+}
+
+.game-card-popup {
+  background-color: #ffffff;
+  width: 100vw;
+  height: 100vh;
+  text-align: center;
+  border-radius: 7px;
+  position: fixed;
+  top: 0%;
+  left: 0%;
+  display: flex;
+  justify-content: center;
+  padding: 2rem;
+}
+
+.active {
+  z-index: 1;
+  opacity: 1;
+}
+
+.blur {
+  opacity: 0.1;
+}
+
+.close-button {
+  position: absolute;
+  top: 0;
+  right: 5%;
+  background-color: black;
+  color: var(--light-blue);
+  width: 3rem;
+  height: 3rem;
+}
+
+.hide {
+  display: none;
+}
+
+.close-button:hover {
+  cursor: pointer;
+  background-color: var(--gray);
 }

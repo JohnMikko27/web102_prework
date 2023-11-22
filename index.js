@@ -40,9 +40,9 @@ function addGamesToPage(games) {
         // set the inner HTML using a template literal to display some info 
         gameCard.innerHTML = `<div>
                                 <img class='game-img' src='${games[i].img}' alt='Picture of ${games[i].name}' />
-                                <div>${games[i].name}</div>
+                                <div class='game-name'>${games[i].name}</div>
                                 <div>${games[i].description}</div>
-                                <div>${games[i].backers} backers</div>
+                                <div>$${games[i].pledged.toLocaleString('en-US')} raised</div>
                               </div
                               `
         // about each game
@@ -183,5 +183,4 @@ firstGameContainer.appendChild(topFundedGame);
 const runnerUp = document.createElement('p');
 runnerUp.innerHTML = second.name;
 secondGameContainer.appendChild(runnerUp);
-
 
